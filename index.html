@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Que nos bombardeen los gringos </title>
+    <title>Que nos bombardeen los gringos</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -12,6 +12,9 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
          crossorigin=""></script>
+
+         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💣</text></svg>">
+
 
     <style>
         /* 3. Estilo para que el mapa ocupe toda la pantalla */
@@ -66,7 +69,65 @@
 
         
         // 9. LISTA DE UBICACIONES (con coordenadas de ejemplo)
+
+        
         const locations = [
+  { name: '0. Foro TV', lat: 19.4216, lon: -99.1601 },
+  { name: '1. Tijuana', lat: 32.5250, lon: -117.0333 },
+  { name: '2. Toluca', lat: 19.2879, lon: -99.6532 },
+  { name: '3. Los Tuxtlas', lat: 18.4486, lon: -95.2125 },
+  { name: '4. Coyoacán', lat: 19.3500, lon: -99.1622 },
+  { name: '5. Chiapas', lat: 16.7516, lon: -93.1030 },
+  //{ name: '6. Base de Nopal', lat: 'XX', lon: 'XX' },
+  { name: '7. IPN', lat: 19.4990, lon: -99.1350 },
+  { name: '8. ITAM', lat: 19.3452, lon: -99.2008 },
+  { name: '9. CIDE', lat: 19.3630, lon: -99.2599 },
+  { name: '10. COLMEX', lat: 19.3039, lon: -99.2078 },
+  { name: '11. Tuxtla', lat: 16.7516, lon: -93.1030 },
+  { name: '12. Atlas (Guadalajara)', lat: 20.7050, lon: -103.3281 },
+  { name: '13. Club Deportivo Guadalajara', lat: 20.6698, lon: -103.4211 },
+  { name: '14. Ominilife', lat: 20.6817, lon: -103.4628 },
+  { name: '15. Estudios de cine de Amaury Vergara', lat: 'XX', lon: 'XX' },
+  { name: '16. Foro TV (otra vez)', lat: 19.4216, lon: -99.1601 },
+  { name: '17. AIFA y Aereopuerto de Toluca', lat: 19.7567, lon: -99.0153 },
+  { name: '18. Universidad Anáhuac', lat: 19.4022, lon: -99.2639 },
+  { name: '19. Universidad Iberoamericana', lat: 19.3711, lon: -99.2636 },
+  { name: '20. Tecnológico de Monterrey', lat: 25.6514, lon: -100.2906 },
+  { name: '21. UNAM', lat: 19.3319, lon: -99.1883 },
+  { name: '22. Puebla', lat: 19.0436, lon: -98.1981 },
+  { name: '23. La ruta Del Dorito al Senado', lat: 19.4365, lon: -99.1387 },
+  //{ name: '24. León Krauze', lat: 'XX', lon: 'XX' },
+  //{ name: '25. Leo Zuckerman', lat: 'XX', lon: 'XX' },
+  //{ name: '26. Carlos Alazraki', lat: 'XX', lon: 'XX' },
+  //{ name: '27. Javier Lozano', lat: 'XX', lon: 'XX' },
+  //{ name: '28. Max Kaiser', lat: 'XX', lon: 'XX' },
+  //{ name: '29. Denise Maerker', lat: 'XX', lon: 'XX' },
+  //{ name: '30. Denise Dresser', lat: 'XX', lon: 'XX' },
+  //{ name: '31. Darío Celis', lat: 'XX', lon: 'XX' },
+  { name: '32. Barra Nacional de Abogados', lat: 19.3713, lon: -99.2005 },
+  { name: '33. Club América', lat: 19.3031, lon: -99.1506 },
+  { name: '34. Televisa', lat: 19.3450, lon: -99.2031 },
+  { name: '35. Club Cruz Azul', lat: 19.2626, lon: -99.1239 },
+  { name: '36. COPARMEX', lat: 19.3900, lon: -99.1722 },
+  //{ name: '37. Diego Ruzzarin', lat: 'XX', lon: 'XX' },
+  //{ name: '38. Viri Ríos', lat: 'XX', lon: 'XX' },
+  { name: '39. Walmex', lat: 19.4601, lon: -99.2215 },
+  { name: '40. Banco Base', lat: 25.6486, lon: -100.3342 },
+  { name: '41. Universidad de Guadalajara (U de G)', lat: 20.6766, lon: -103.3550 },
+  { name: '42. Genomma Lab', lat: 19.3621, lon: -99.2721 },
+  { name: '43. Consejo Regulador del Tequila (CRT)', lat: 20.6626, lon: -103.4035 },
+  //{ name: '44. Sabina Berman y Paty Armendariz', lat: 'XX', lon: 'XX' },
+  //{ name: '45. Hoteles y casas de playas de las elites', lat: 'XX', lon: 'XX' },
+  //{ name: '46. Diego Dreyfus', lat: 'XX', lon: 'XX' },
+  //{ name: '47. Simón Levy', lat: 'XX', lon: 'XX' },
+  { name: '48. Oficinas centrales de Grupo Salinas', lat: 19.2967, lon: -99.1860 },
+  { name: '49. 6 Arzobispados', lat: 19.4344, lon: -99.1331 },
+  { name: '50. El República', lat: 19.4316, lon: -99.1966 },
+  { name: '51. El Pujol', lat: 19.4324, lon: -99.1947 },
+  { name: '52. La Habana', lat: 23.1367, lon: -82.3589 },
+  { name: '53. La Catedral del video de Paco', lat: 19.4, lon: -99.18 }
+]
+        /*[
             { name: '0. Foro TV', lat: 19.4216, lon: -99.1601 },
             { name: '1. Tijuana', lat: 32.5149, lon: -117.0382 },
             { name: '2. Toluca', lat: 19.2826, lon: -99.6556 },
@@ -86,6 +147,7 @@
             { name: '51. El Pujol', lat: 19.4326, lon: -99.2011 }
             // ... Sigue agregando tus lugares con coordenadas aquí
         ];
+        */
 
         
         // 10. Crear el ícono de bomba (emoji)
