@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Infografía</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+         crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+         crossorigin=""></script>
+
+    <style>
+        /* 3. Estilo para que el mapa ocupe toda la pantalla */
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100vw;
+        }
+        
+        /* 4. Estilo para el emoji de la bomba */
+        .emoji-icon {
+            font-size: 24px; /* Tamaño del emoji */
+            text-align: center;
+            line-height: 1.1;
+            margin-left: -12px; 
+            margin-top: -12px;
+        }
+
+        /* 5. !! NUEVO: Estilo para la etiqueta permanente !! */
+        .permanent-label {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            font-weight: bold;
+            font-size: 11px; /* Un poco más pequeño para no saturar */
+            color: #000000;
+            /* Sombra de texto para legibilidad sobre el mapa */
+            text-shadow: 
+                1px 1px 1px #FFF,
+                -1px 1px 1px #FFF,
+                1px -1px 1px #FFF,
+                -1px -1px 1px #FFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script>
+        // 7. Inicializar el mapa
+        const map = L.map('map').setView([19.4326, -99.1332], 6);
+
+        // 8. Cargar el mapa base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        
+        // 9. LISTA DE UBICACIONES (con coordenadas de ejemplo)
+        const locations = [
+            { name: '0. Foro TV', lat: 19.4216, lon: -99.1601 },
+            { name: '1. Tijuana', lat: 32.5149, lon: -117.0382 },
+            { name: '2. Toluca', lat: 19.2826, lon: -99.6556 },
+            { name: '4. Coyoacán', lat: 19.3499, lon: -99.1624 },
+            { name: '5. Chiapas', lat: 16.7569, lon: -93.1292 },
+            { name: '7. IPN (Zacatenco)', lat: 19.5041, lon: -99.1417 },
+            { name: '8. ITAM (Río Hondo)', lat: 19.3562, lon: -99.2017 },
+            { name: '9. CIDE (Santa Fe)', lat: 19.3582, lon: -99.2618 },
+            { name: '10. COLMEX', lat: 19.3039, lon: -99.2208 },
+            { name: '17. AIFA', lat: 19.7420, lon: -99.0135 },
+            { name: '17. Aerop. Toluca', lat: 19.3370, lon: -99.5661 },
+            { name: '21. UNAM (Rectoría)', lat: 19.3320, lon: -99.1865 },
+            { name: '22. Puebla', lat: 19.0414, lon: -98.2063 },
+            { name: '34. Televisa (San Ángel)', lat: 19.3380, lon: -99.2155 },
+            { name: '41. U de G (Rectoría)', lat: 20.6779, lon: -103.3444 },
+            { name: '48. Grupo Salinas', lat: 19.3105, lon: -99.1822 },
+            { name: '51. El Pujol', lat: 19.4326, lon: -99.2011 }
+            // ... Sigue agregando tus lugares con coordenadas aquí
+        ];
+
+        
+        // 10. Crear el ícono de bomba (emoji)
+        const bombIcon = L.divIcon({
+            html: '💣',
+            className: 'emoji-icon',
+            iconSize: [24, 24]
+        });
+
+        // 11. !! MODIFICADO: Agregar marcadores con ETIQUETA PERMANENTE !!
+        locations.forEach(loc => {
+            L.marker([loc.lat, loc.lon], { icon: bombIcon })
+                .addTo(map)
+                .bindTooltip(loc.name, { // <-- Esta es la parte que cambió
+                    permanent: true,     // true = siempre visible
+                    direction: 'top',    // 'top', 'bottom', 'left', 'right'
+                    offset: [0, -15],    // Ajuste [horizontal, vertical] para que quede *arriba* del emoji
+                    className: 'permanent-label' // Usar el estilo CSS que definimos
+                });
+        });
+
+    </script>
+</body>
+</html>
